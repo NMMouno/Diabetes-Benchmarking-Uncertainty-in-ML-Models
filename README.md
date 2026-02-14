@@ -1,157 +1,236 @@
-Diabetes Benchmarking: Uncertainty, Calibration, and Predictive Safety in Machine Learning
+# Diabetes Benchmarking: Predictive Performance, Calibration, and Uncertainty in Machine Learning
 
-This repository contains the full experimental pipeline, evaluation framework, and analysis code for the paper:
+This repository contains the complete experimental pipeline, evaluation framework, and analysis code for benchmarking machine learning models for **reliable diabetes risk prediction from tabular data**.
 
-"Benchmarking Predictive Performance, Calibration, and Uncertainty for Reliable Diabetes Risk Prediction from Tabular Data"
+Unlike conventional studies focused only on predictive accuracy, this work evaluates **predictive reliability, calibration, epistemic uncertainty, and safety** across diverse model families and heterogeneous clinical datasets.
 
-The project provides a comprehensive benchmarking study across 12 machine learning models, evaluated on two heterogeneous diabetes datasets, with a strong focus on predictive reliability, uncertainty, and safety — beyond conventional accuracy metrics.
+---
 
-Overview
+## Overview
 
-Traditional ML studies in healthcare focus primarily on predictive accuracy. However, high accuracy does not guarantee reliable or safe predictions, especially in clinical decision-support settings.
+High predictive accuracy does not guarantee reliable or safe predictions, especially in clinical decision-support systems. This project systematically evaluates whether machine learning models produce **trustworthy probability estimates, meaningful uncertainty signals, and statistically valid predictions**.
 
-This project systematically evaluates:
+The framework benchmarks **12 machine learning models** across two diabetes datasets under a strict leakage-free evaluation protocol.
 
-Predictive discrimination (PR-AUC, ROC-AUC)
+---
 
-Probability calibration and reliability
+## Key Contributions
 
-Epistemic uncertainty quality
+- Comprehensive benchmarking of **12 ML models**
+- Evaluation beyond accuracy: **calibration, uncertainty, and predictive safety**
+- Leakage-free cross-validation with independent calibration split
+- Post-hoc calibration (Temperature Scaling and Isotonic Regression)
+- Epistemic uncertainty estimation across all model families
+- Risk–coverage and selective prediction safety analysis
+- Conformal prediction with statistical reliability guarantees
+- Publication-quality figures and reproducible pipeline
 
-Selective prediction safety
+---
 
-Conformal prediction with statistical guarantees
+## Models Included
 
-Comparative safety analysis across models and datasets
+### Linear & Probabilistic
+- Logistic Regression (ElasticNet)
+- Ridge Classifier
+- Gaussian Naïve Bayes
 
-The goal is to understand which models are not only accurate, but trustworthy.
+### Ensemble Tree Models
+- Random Forest  
+- Extra Trees  
+- XGBoost  
+- LightGBM  
+- CatBoost  
 
-Key Features
+### Classical Nonlinear
+- Support Vector Machine (RBF Kernel)
 
-Benchmarking of 12 ML models across classical, ensemble, and deep learning families
+### Deep Tabular Models
+- Multilayer Perceptron (MLP)  
+- TabNet  
+- FT-Transformer  
 
-Leakage-free nested cross-validation with calibration split
+---
 
-Post-hoc probability calibration (Temperature Scaling, Isotonic Regression)
+## Datasets
 
-Epistemic uncertainty estimation for all models
+### 1. BRFSS 2015 Diabetes Health Indicators
+Population-scale diabetes risk prediction dataset derived from CDC BRFSS survey.
 
-Risk–coverage and selective prediction analysis
+- ~10,000 samples (balanced subset)
+- 21 tabular features
+- Demographic, lifestyle, and health indicators
 
-Conformal prediction with validity guarantees
+Dataset:
+https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset  
 
-High-quality scientific figures and tables for publication
+Original BRFSS:
+https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system  
 
-Fully reproducible pipeline
+---
 
-Models Included
-Linear & Probabilistic
+### 2. Early-Stage Diabetes Risk Prediction
+Small clinical dataset for symptom-based diabetes prediction.
 
-Logistic Regression (ElasticNet)
+- 520 samples
+- 16 features
+- Mixed categorical and binary variables
 
-Ridge Classifier
+Dataset:
+https://www.kaggle.com/datasets/ishandutta/early-stage-diabetes-risk-prediction-dataset  
 
-Gaussian Naïve Bayes
+---
 
-Ensemble Tree Models
+## Evaluation Dimensions
 
-Random Forest
+### Predictive Performance
+- PR-AUC (primary)
+- ROC-AUC
+- Balanced Accuracy
+- MCC, F1-score, Sensitivity, Specificity
 
-Extra Trees
+### Calibration & Probability Reliability
+- Expected Calibration Error (ECE)
+- Brier Score
+- Negative Log-Likelihood (NLL)
+- Reliability diagrams
 
-XGBoost
+### Epistemic Uncertainty
+- Epistemic AURC (EpAURC)
+- Risk–coverage curves
+- High-confidence incorrect rate
+- Spearman correlation (uncertainty vs error)
 
-LightGBM
+### Selective Prediction
+- Accuracy at fixed coverage (80%, 90%, 95%)
+- Safety improvement via uncertainty-based rejection
 
-CatBoost
+### Conformal Prediction
+- Coverage validity (90%, 95%)
+- Prediction set size
+- Formal reliability guarantees
 
-Classical Nonlinear
+---
 
-Support Vector Machine (RBF)
+## Repository Structure
 
-Deep Tabular Models
+# Diabetes Benchmarking: Predictive Performance, Calibration, and Uncertainty in Machine Learning
 
-Multilayer Perceptron (MLP)
+This repository contains the complete experimental pipeline, evaluation framework, and analysis code for benchmarking machine learning models for **reliable diabetes risk prediction from tabular data**.
 
-TabNet
+Unlike conventional studies focused only on predictive accuracy, this work evaluates **predictive reliability, calibration, epistemic uncertainty, and safety** across diverse model families and heterogeneous clinical datasets.
 
-FT-Transformer
+---
 
-Datasets
-1. BRFSS 2015 Diabetes Health Indicators
+## Overview
 
-Population-scale diabetes risk dataset derived from CDC BRFSS survey.
+High predictive accuracy does not guarantee reliable or safe predictions, especially in clinical decision-support systems. This project systematically evaluates whether machine learning models produce **trustworthy probability estimates, meaningful uncertainty signals, and statistically valid predictions**.
 
-~10,000 samples (balanced subset)
+The framework benchmarks **12 machine learning models** across two diabetes datasets under a strict leakage-free evaluation protocol.
 
-21 tabular features
+---
 
-Demographic, lifestyle, and health indicators
+## Key Contributions
 
-Population-level risk prediction
+- Comprehensive benchmarking of **12 ML models**
+- Evaluation beyond accuracy: **calibration, uncertainty, and predictive safety**
+- Leakage-free cross-validation with independent calibration split
+- Post-hoc calibration (Temperature Scaling and Isotonic Regression)
+- Epistemic uncertainty estimation across all model families
+- Risk–coverage and selective prediction safety analysis
+- Conformal prediction with statistical reliability guarantees
+- Publication-quality figures and reproducible pipeline
 
-Dataset link:
-https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
+---
 
-Original BRFSS source:
-https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system
+## Models Included
 
-2. Early-Stage Diabetes Risk Prediction
+### Linear & Probabilistic
+- Logistic Regression (ElasticNet)
+- Ridge Classifier
+- Gaussian Naïve Bayes
 
-Small clinical dataset for symptom-based diabetes detection.
+### Ensemble Tree Models
+- Random Forest  
+- Extra Trees  
+- XGBoost  
+- LightGBM  
+- CatBoost  
 
-520 samples
+### Classical Nonlinear
+- Support Vector Machine (RBF Kernel)
 
-16 features (symptoms + demographic)
+### Deep Tabular Models
+- Multilayer Perceptron (MLP)  
+- TabNet  
+- FT-Transformer  
 
-Mixed categorical and binary variables
+---
 
-Clinical risk prediction scenario
+## Datasets
 
-Dataset link:
-https://www.kaggle.com/datasets/ishandutta/early-stage-diabetes-risk-prediction-dataset
+### 1. BRFSS 2015 Diabetes Health Indicators
+Population-scale diabetes risk prediction dataset derived from CDC BRFSS survey.
 
-Evaluation Dimensions
-Predictive Performance
+- ~10,000 samples (balanced subset)
+- 21 tabular features
+- Demographic, lifestyle, and health indicators
 
-PR-AUC (primary metric)
+Dataset:
+https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset  
 
-ROC-AUC
+Original BRFSS:
+https://www.kaggle.com/datasets/cdc/behavioral-risk-factor-surveillance-system  
 
-Accuracy, Balanced Accuracy
+---
 
-MCC, F1, Sensitivity, Specificity
+### 2. Early-Stage Diabetes Risk Prediction
+Small clinical dataset for symptom-based diabetes prediction.
 
-Calibration & Reliability
+- 520 samples
+- 16 features
+- Mixed categorical and binary variables
 
-Expected Calibration Error (ECE)
+Dataset:
+https://www.kaggle.com/datasets/ishandutta/early-stage-diabetes-risk-prediction-dataset  
 
-Brier Score
+---
 
-Negative Log-Likelihood (NLL)
+## Evaluation Dimensions
 
-Reliability diagrams
+### Predictive Performance
+- PR-AUC (primary)
+- ROC-AUC
+- Balanced Accuracy
+- MCC, F1-score, Sensitivity, Specificity
 
-Epistemic Uncertainty
+### Calibration & Probability Reliability
+- Expected Calibration Error (ECE)
+- Brier Score
+- Negative Log-Likelihood (NLL)
+- Reliability diagrams
 
-Epistemic AURC (EpAURC)
+### Epistemic Uncertainty
+- Epistemic AURC (EpAURC)
+- Risk–coverage curves
+- High-confidence incorrect rate
+- Spearman correlation (uncertainty vs error)
 
-Risk–coverage curves
+### Selective Prediction
+- Accuracy at fixed coverage (80%, 90%, 95%)
+- Safety improvement via uncertainty-based rejection
 
-High-confidence wrong rate
+### Conformal Prediction
+- Coverage validity (90%, 95%)
+- Prediction set size
+- Formal reliability guarantees
 
-Spearman correlation (uncertainty vs error)
+## Repository Structure
 
-Selective Prediction
-
-Accuracy at fixed coverage (80%, 90%, 95%)
-
-Safety improvement under rejection
-
-Conformal Prediction
-
-Coverage validity (90%, 95%)
-
-Prediction set size
-
-Reliability guarantees
+├── gpip-diabetes-uncertainty-1.ipynb
+├── outputs/
+│ ├── figures/
+│ ├── tables/
+│ ├── predictions/
+│ └── metrics/
+├── README.md
+└── requirements.txt
